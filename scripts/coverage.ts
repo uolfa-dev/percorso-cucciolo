@@ -33,7 +33,6 @@ const groups: { title: string; rows: CoverageRow[] }[] = [
       rows: rows.filter((r) => r.moduleId === module.id && r.status !== 'escluso'),
     })),
   { title: '(non assegnati)', rows: rows.filter((r) => r.moduleId === null && r.status !== 'escluso') },
-  { title: '(esclusi)', rows: rows.filter((r) => r.status === 'escluso') },
 ]
 
 for (const group of groups) {
@@ -43,8 +42,17 @@ for (const group of groups) {
       `${count(group.rows, 'in sospeso')} in sospeso`,
   )
   if (!options.list) continue
-  for (const { video, status, exclusion } of group.rows) {
-    console.log(`  [${exclusion ?? status}] ${video.id}  ${video.title}`)
+  for (const { video, status } of group.rows) console.log(`  [${status}] ${video.id}  ${video.title}`)
+}
+
+const excluded = rows.filter((r) => r.status === 'escluso')
+if (excluded.length > 0) {
+  const byReason = new Map<string, number>()
+  for (const { exclusion } of excluded) if (exclusion) byReason.set(exclusion, (byReason.get(exclusion) ?? 0) + 1)
+  const reasons = [...byReason].map(([reason, total]) => `${reason} ${total}`).join(', ')
+  console.log(`\n(esclusi): ${excluded.length} tutorial (${reasons})`)
+  if (options.list) {
+    for (const { video, exclusion } of excluded) console.log(`  [${exclusion}] ${video.id}  ${video.title}`)
   }
 }
 

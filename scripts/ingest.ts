@@ -1,9 +1,9 @@
 import { spawnSync } from 'node:child_process'
-import { closeSync, existsSync, mkdirSync, openSync, readdirSync, readFileSync, renameSync } from 'node:fs'
+import { closeSync, existsSync, mkdirSync, openSync, readdirSync, renameSync } from 'node:fs'
 import { join } from 'node:path'
 import { setTimeout as sleep } from 'node:timers/promises'
 import { parseArgs } from 'node:util'
-import { VIDEO_ID_RE } from '../src/content/schema.ts'
+import { isPublicVideo, readFlatPlaylist } from './lib/channel.ts'
 import { RAW_CHANNEL, RAW_VIDEOS, ROOT } from './lib/paths.ts'
 
 const CHANNEL = 'https://www.youtube.com/@kikopup'
@@ -54,9 +54,8 @@ function dumpFlatPlaylist(url: string, file: string): boolean {
   return ok
 }
 
-function entryIds(file: string): string[] {
-  const { entries = [] } = JSON.parse(readFileSync(file, 'utf8')) as { entries?: { id?: string }[] }
-  return entries.flatMap((entry) => (entry.id ? [entry.id] : []))
+function entriesOf(file: string) {
+  return readFlatPlaylist(join(RAW_CHANNEL, file)).entries ?? []
 }
 
 mkdirSync(join(RAW_CHANNEL, 'playlists'), { recursive: true })
@@ -70,7 +69,9 @@ for (const tab of ['videos', 'shorts', 'playlists']) {
   }
 }
 
-const playlistIds = entryIds(join(RAW_CHANNEL, 'playlists.json')).filter((id) => /^[A-Za-z0-9_-]+$/.test(id))
+const playlistIds = entriesOf('playlists.json')
+  .map((entry) => entry.id)
+  .filter((id) => /^[A-Za-z0-9_-]+$/.test(id))
 for (const [index, id] of playlistIds.entries()) {
   console.log(`Playlist ${index + 1}/${playlistIds.length}: ${id}`)
   if (!dumpFlatPlaylist(`https://www.youtube.com/playlist?list=${id}`, join(RAW_CHANNEL, 'playlists', `${id}.json`))) {
@@ -78,7 +79,9 @@ for (const [index, id] of playlistIds.entries()) {
   }
 }
 
-const videoIds = entryIds(join(RAW_CHANNEL, 'videos.json')).filter((id) => VIDEO_ID_RE.test(id))
+const videoIds = entriesOf('videos.json')
+  .filter(isPublicVideo)
+  .map((entry) => entry.id)
 const downloaded = new Set(
   readdirSync(RAW_VIDEOS)
     .filter((name) => name.endsWith('.info.json'))
@@ -86,8 +89,12 @@ const downloaded = new Set(
 )
 const limit = options.limit === undefined ? Infinity : Number.parseInt(options.limit, 10)
 if (Number.isNaN(limit)) throw new Error(`--limit non valido: ${options.limit}`)
-const pending = videoIds.filter((id) => !downloaded.has(id)).slice(0, limit)
-console.log(`${videoIds.length} video nel canale, ${downloaded.size} già scaricati, ${pending.length} da scaricare ora.`)
+const missing = videoIds.filter((id) => !downloaded.has(id))
+const pending = missing.slice(0, limit)
+console.log(
+  `${videoIds.length} video pubblici nel canale, ${videoIds.length - missing.length} già scaricati, ` +
+    `${pending.length} da scaricare ora.`,
+)
 
 if (options['list-only']) process.exit(0)
 

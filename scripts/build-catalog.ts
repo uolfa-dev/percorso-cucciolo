@@ -1,20 +1,15 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { VIDEO_ID_RE, type Video } from '../src/content/schema.ts'
+import type { Video } from '../src/content/schema.ts'
+import { isPublicVideo, readFlatPlaylist, type FlatEntry } from './lib/channel.ts'
 import { CONTENT, RAW_CHANNEL, RAW_VIDEOS, TRANSCRIPTS } from './lib/paths.ts'
 
-type FlatEntry = { id: string; title?: string; duration?: number | null; availability?: string | null }
-type FlatPlaylist = { title?: string; entries?: FlatEntry[] }
 type VideoInfo = { title?: string; duration?: number; upload_date?: string }
-
-function readJson<T>(file: string): T {
-  return JSON.parse(readFileSync(file, 'utf8')) as T
-}
 
 const playlistsByVideo = new Map<string, Set<string>>()
 const playlistsDir = join(RAW_CHANNEL, 'playlists')
 for (const name of readdirSync(playlistsDir).filter((n) => n.endsWith('.json'))) {
-  const playlist = readJson<FlatPlaylist>(join(playlistsDir, name))
+  const playlist = readFlatPlaylist(join(playlistsDir, name))
   if (!playlist.title) continue
   for (const entry of playlist.entries ?? []) {
     const titles = playlistsByVideo.get(entry.id) ?? new Set()
@@ -22,14 +17,9 @@ for (const name of readdirSync(playlistsDir).filter((n) => n.endsWith('.json')))
   }
 }
 
-// I video riservati agli abbonati del canale non sono contenuti gratuiti: restano fuori
-function isPublic(entry: FlatEntry): boolean {
-  return VIDEO_ID_RE.test(entry.id) && (!entry.availability || ['public', 'unlisted'].includes(entry.availability))
-}
-
 function toVideo(entry: FlatEntry, kind: Video['kind']): Video {
   const infoFile = join(RAW_VIDEOS, `${entry.id}.info.json`)
-  const info = existsSync(infoFile) ? readJson<VideoInfo>(infoFile) : {}
+  const info = existsSync(infoFile) ? (JSON.parse(readFileSync(infoFile, 'utf8')) as VideoInfo) : {}
   const uploadDate = info.upload_date?.match(/^(\d{4})(\d{2})(\d{2})$/)
   const duration = info.duration ?? entry.duration
   return {
@@ -43,11 +33,11 @@ function toVideo(entry: FlatEntry, kind: Video['kind']): Video {
   }
 }
 
-const longVideos = readJson<FlatPlaylist>(join(RAW_CHANNEL, 'videos.json')).entries ?? []
-const shorts = readJson<FlatPlaylist>(join(RAW_CHANNEL, 'shorts.json')).entries ?? []
+const longVideos = readFlatPlaylist(join(RAW_CHANNEL, 'videos.json')).entries ?? []
+const shorts = readFlatPlaylist(join(RAW_CHANNEL, 'shorts.json')).entries ?? []
 const videos = [
-  ...longVideos.filter(isPublic).map((entry) => toVideo(entry, 'tutorial')),
-  ...shorts.filter(isPublic).map((entry) => toVideo(entry, 'short')),
+  ...longVideos.filter(isPublicVideo).map((entry) => toVideo(entry, 'tutorial')),
+  ...shorts.filter(isPublicVideo).map((entry) => toVideo(entry, 'short')),
 ]
 
 const outDir = join(CONTENT, 'catalog')
