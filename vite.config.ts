@@ -5,6 +5,9 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   // Percorsi relativi: la stessa build funziona sotto qualsiasi sottocartella (GitHub Pages).
   base: './',
+  // Dati grezzi e toolchain locale stanno nella cartella del progetto ma non fanno parte dell'app
+  server: { watch: { ignored: ['**/data/**', '**/.tools/**', '**/.venv/**'] } },
+  optimizeDeps: { entries: ['index.html'] },
   plugins: [
     react(),
     VitePWA({
