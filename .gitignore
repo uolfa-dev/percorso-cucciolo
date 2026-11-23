@@ -1,0 +1,14 @@
+node_modules/
+dist/
+dev-dist/
+
+# Dati grezzi, sottotitoli, trascrizioni e cookie: mai nel repo
+data/
+
+# Toolchain locale (Node portabile, venv di yt-dlp)
+.tools/
+.venv/
+
+.vscode/
+*.local
+*.log

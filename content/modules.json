@@ -1,0 +1,74 @@
+[
+  {
+    "id": "fondamenta",
+    "title": "Fondamenta",
+    "description": "Marcatore, rinforzi, attenzione e segnale di rilascio: le basi su cui poggia tutto il resto.",
+    "order": 1
+  },
+  {
+    "id": "calma",
+    "title": "Calma e autocontrollo",
+    "description": "Rilassarsi in casa e fuori, aspettare, rinunciare a ciò che attira.",
+    "order": 2
+  },
+  {
+    "id": "guinzaglio",
+    "title": "Guinzaglio",
+    "description": "Camminare al guinzaglio lento e restare in contatto durante la passeggiata.",
+    "order": 3
+  },
+  {
+    "id": "richiamo",
+    "title": "Richiamo",
+    "description": "Tornare quando viene chiamato, anche con distrazioni.",
+    "order": 4
+  },
+  {
+    "id": "inseguimento",
+    "title": "Inseguire e radunare",
+    "description": "Auto, bici, corridori, animali: gestire l'istinto di inseguire e radunare.",
+    "order": 5
+  },
+  {
+    "id": "abbaio",
+    "title": "Abbaio",
+    "description": "Abbaio ai rumori, per attenzione, per eccitazione.",
+    "order": 6
+  },
+  {
+    "id": "saluti-morsi",
+    "title": "Saluti e morsi",
+    "description": "Salutare senza saltare addosso, mordicchiare, masticare le cose giuste.",
+    "order": 7
+  },
+  {
+    "id": "solitudine",
+    "title": "Restare da solo",
+    "description": "Abituarsi per gradi a restare da solo con serenità.",
+    "order": 8
+  },
+  {
+    "id": "reattivita",
+    "title": "Reattività e paure",
+    "description": "Reazioni verso cani e persone, paure, timidezza.",
+    "order": 9
+  },
+  {
+    "id": "trick",
+    "title": "Trick e giochi mentali",
+    "description": "Esercizi divertenti per impegnare la testa e rafforzare l'intesa.",
+    "order": 10
+  },
+  {
+    "id": "cura",
+    "title": "Manipolazione e cure",
+    "description": "Farsi toccare, spazzolare, tagliare le unghie, andare dal veterinario.",
+    "order": 11
+  },
+  {
+    "id": "vita-quotidiana",
+    "title": "Vita quotidiana",
+    "description": "Tutto il resto della convivenza di ogni giorno.",
+    "order": 12
+  }
+]

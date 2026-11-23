@@ -1,0 +1,130 @@
+{
+  "stages": [
+    {
+      "id": "basi",
+      "title": "Ripartire dalle basi giuste",
+      "description": "Marcatore e rinforzi come ripasso, attenzione al nome, cattura della calma, segnale di rilascio.",
+      "kind": "core",
+      "lessonIds": ["segnale-di-rilascio"]
+    },
+    {
+      "id": "calma-in-casa",
+      "title": "Calma in casa",
+      "description": "Tappetino e relax, lascia di base, saluti senza saltare, mordicchiare e masticazione.",
+      "kind": "core",
+      "lessonIds": []
+    },
+    {
+      "id": "fuori-insieme",
+      "title": "Fuori insieme",
+      "description": "Guinzaglio lento di base, attenzione all'aperto, richiamo di base, auto e bici a distanza.",
+      "kind": "core",
+      "lessonIds": ["inseguire-le-auto"]
+    },
+    {
+      "id": "autocontrollo-in-movimento",
+      "title": "Autocontrollo in movimento",
+      "description": "Lascia avanzato, resta con distrazioni, richiamo con distrazioni, protocollo per l'inseguimento.",
+      "kind": "core",
+      "lessonIds": []
+    },
+    {
+      "id": "da-solo-e-tranquillo",
+      "title": "Da solo e tranquillo",
+      "description": "Separazione graduale, abbaio ai rumori e per attenzione.",
+      "kind": "core",
+      "lessonIds": []
+    },
+    {
+      "id": "mondo-reale",
+      "title": "Mondo reale",
+      "description": "Reattività verso cani e persone, guinzaglio in ambienti difficili, richiamo d'emergenza.",
+      "kind": "core",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-fondamenta",
+      "title": "Fondamenta",
+      "description": "Altre lezioni sulle basi dell'addestramento.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-calma",
+      "title": "Calma e autocontrollo",
+      "description": "Altre lezioni su calma e autocontrollo.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-guinzaglio",
+      "title": "Guinzaglio",
+      "description": "Altre lezioni sulla passeggiata al guinzaglio.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-richiamo",
+      "title": "Richiamo",
+      "description": "Altre lezioni sul richiamo.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-inseguimento",
+      "title": "Inseguire e radunare",
+      "description": "Altre lezioni su inseguimento e istinto di radunare.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-abbaio",
+      "title": "Abbaio",
+      "description": "Altre lezioni sull'abbaio.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-saluti-morsi",
+      "title": "Saluti e morsi",
+      "description": "Altre lezioni su saluti, morsi e masticazione.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-solitudine",
+      "title": "Restare da solo",
+      "description": "Altre lezioni sul restare da solo.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-reattivita",
+      "title": "Reattività e paure",
+      "description": "Altre lezioni su reattività, paure e timidezza.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-trick",
+      "title": "Trick e giochi mentali",
+      "description": "Altri trick e giochi.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-cura",
+      "title": "Manipolazione e cure",
+      "description": "Altre lezioni su manipolazione e cure.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-vita-quotidiana",
+      "title": "Vita quotidiana",
+      "description": "Altre lezioni sulla convivenza di ogni giorno.",
+      "kind": "extra",
+      "lessonIds": ["rilascio-da-cuccia-e-divano"]
+    }
+  ]
+}

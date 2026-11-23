@@ -1,0 +1,46 @@
+{
+  "id": "inseguire-le-auto",
+  "moduleId": "inseguimento",
+  "title": "Auto in movimento: radunare e inseguire",
+  "summary": "Come l'autrice affronta la tendenza a radunare e inseguire le auto. Il video parte dall'eccitazione davanti allo stimolo e arriva ai rinforzi calmi.",
+  "goal": "Capire come impostare il lavoro con un cane che si eccita davanti alle auto e le insegue.",
+  "prerequisites": [],
+  "equipment": [],
+  "sessionMinutes": 5,
+  "steps": [
+    {
+      "text": "Parti dal capire l'eccitazione che lo stimolo provoca nel cane.",
+      "videoId": "ByZxXel4PNw",
+      "startSec": 0
+    },
+    {
+      "text": "Segui la parte su come gestire gli ambienti in cui ti alleni.",
+      "videoId": "ByZxXel4PNw",
+      "startSec": 109
+    },
+    {
+      "text": "Segui la parte sulla costanza e sul cominciare presto.",
+      "videoId": "ByZxXel4PNw",
+      "startSec": 205
+    },
+    {
+      "text": "Guarda il caso di studio con un border collie.",
+      "videoId": "ByZxXel4PNw",
+      "startSec": 329
+    },
+    {
+      "text": "Impara a riconoscere i segnali di eccitazione.",
+      "videoId": "ByZxXel4PNw",
+      "startSec": 406
+    },
+    {
+      "text": "Segui la parte sul condizionamento di rinforzi calmi.",
+      "videoId": "ByZxXel4PNw",
+      "startSec": 501
+    }
+  ],
+  "criteria": "Riconosci i segnali di eccitazione del tuo cane davanti alle auto e sai come organizzare l'ambiente di allenamento.",
+  "mistakes": [],
+  "videos": [{ "videoId": "ByZxXel4PNw" }],
+  "draft": true
+}

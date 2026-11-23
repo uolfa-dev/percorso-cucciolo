@@ -1,0 +1,56 @@
+{
+  "id": "segnale-di-rilascio",
+  "moduleId": "fondamenta",
+  "title": "Segnale di rilascio",
+  "summary": "Il cane resta in posizione finché non sente il segnale che lo libera. Il video mostra come insegnarlo e come metterlo alla prova con distrazioni via via più difficili.",
+  "goal": "Il cane lascia la posizione solo quando sente il segnale di rilascio, anche in presenza di distrazioni.",
+  "prerequisites": [],
+  "equipment": ["Bocconcini", "Giochi, anche sonori", "Guinzaglio"],
+  "sessionMinutes": 5,
+  "steps": [
+    {
+      "text": "Guarda come viene insegnato il segnale di rilascio a partire dal resta a terra.",
+      "videoId": "tKHTYneseaw",
+      "startSec": 0
+    },
+    {
+      "text": "Verifica il controllo dello stimolo: il cane deve muoversi solo al segnale di rilascio.",
+      "videoId": "tKHTYneseaw",
+      "startSec": 43
+    },
+    {
+      "text": "Aggiungi distrazioni mentre il cane resta, variando distrazioni e segnali.",
+      "videoId": "tKHTYneseaw",
+      "startSec": 64
+    },
+    {
+      "text": "Segui la parte sulla gestione degli errori prima di aumentare la difficoltà.",
+      "videoId": "tKHTYneseaw",
+      "startSec": 143
+    },
+    {
+      "text": "Metti alla prova il resta con altri segnali verbali.",
+      "videoId": "tKHTYneseaw",
+      "startSec": 200
+    },
+    {
+      "text": "Prova con il cibo e con le distrazioni dell'ambiente, poi con oggetti lasciati cadere e con i giochi.",
+      "videoId": "tKHTYneseaw",
+      "startSec": 239
+    },
+    {
+      "text": "Segui la parte sull'uso del guinzaglio per sicurezza.",
+      "videoId": "tKHTYneseaw",
+      "startSec": 352
+    },
+    {
+      "text": "Alza i criteri un po' alla volta e varia le situazioni, fino al lavoro al parco.",
+      "videoId": "tKHTYneseaw",
+      "startSec": 423
+    }
+  ],
+  "criteria": "Il cane resta fermo davanti alle distrazioni mostrate nel video e si muove solo quando sente il segnale di rilascio.",
+  "mistakes": [],
+  "videos": [{ "videoId": "tKHTYneseaw" }],
+  "draft": true
+}

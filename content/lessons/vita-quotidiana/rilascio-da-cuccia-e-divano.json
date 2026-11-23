@@ -1,0 +1,39 @@
+{
+  "id": "rilascio-da-cuccia-e-divano",
+  "moduleId": "vita-quotidiana",
+  "title": "Scendere da cuccia e divano a comando",
+  "summary": "Una tecnica per far sì che il cane voglia spostarsi da cuccia, divano o trasportino, utile quando difende il posto. Si basa su un segnale di rilascio costruito lontano dalle situazioni difficili.",
+  "goal": "Il cane lascia volentieri cuccia, divano o trasportino quando sente il segnale di rilascio.",
+  "prerequisites": ["segnale-di-rilascio"],
+  "equipment": [],
+  "sessionMinutes": 5,
+  "steps": [
+    {
+      "text": "Insegna il segnale di rilascio lontano dalle situazioni in cui il cane difende il posto.",
+      "videoId": "n1wUoUrWXdg",
+      "startSec": 0
+    },
+    {
+      "text": "Rendilo forte e affidabile, legato a un'emozione positiva, come faresti con il richiamo."
+    },
+    {
+      "text": "Chiedi il rilascio in situazioni via via più difficili."
+    },
+    {
+      "text": "Quando regge anche lì, usalo nelle situazioni reali in cui serve."
+    },
+    {
+      "text": "Se ti è utile, insegna anche un segnale per spostarsi in un altro posto."
+    }
+  ],
+  "criteria": "Il cane risponde al segnale di rilascio in modo affidabile anche nelle situazioni reali in cui prima difendeva il posto.",
+  "mistakes": [],
+  "safetyNote": "Se il cane può diventare aggressivo, fatti aiutare da un educatore professionista che non usi intimidazione fisica o psicologica.",
+  "videos": [
+    { "videoId": "n1wUoUrWXdg" },
+    { "videoId": "tKHTYneseaw", "label": "Approfondimento: come insegnare il segnale di rilascio" },
+    { "videoId": "Z-kvwI_DmHU", "label": "Vai alla cuccia e rilascio" },
+    { "videoId": "P8yc5Y9HGY4", "label": "Entra nel trasportino e rilascio" }
+  ],
+  "draft": true
+}
