@@ -3,8 +3,8 @@
   <g fill="#fff">
     <ellipse cx="256" cy="334" rx="94" ry="76"/>
     <ellipse cx="146" cy="236" rx="38" ry="50" transform="rotate(-22 146 236)"/>
-    <ellipse cx="218" cy="166" rx="38" ry="52" transform="rotate(-7 218 166)"/>
-    <ellipse cx="294" cy="166" rx="38" ry="52" transform="rotate(7 294 166)"/>
+    <ellipse cx="212" cy="166" rx="38" ry="52" transform="rotate(-7 212 166)"/>
+    <ellipse cx="300" cy="166" rx="38" ry="52" transform="rotate(7 300 166)"/>
     <ellipse cx="366" cy="236" rx="38" ry="50" transform="rotate(22 366 236)"/>
   </g>
 </svg>
