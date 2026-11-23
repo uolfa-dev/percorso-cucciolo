@@ -1,0 +1,40 @@
+.lesson {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+
+.lessonText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+}
+
+.lessonText span {
+  font-weight: 400;
+}
+
+.dot {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--muted);
+  border-radius: 50%;
+}
+
+.todo {
+  background: transparent;
+}
+
+.in-progress {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.mastered,
+.known {
+  border-color: var(--primary);
+  background: var(--primary);
+}

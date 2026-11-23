@@ -7,5 +7,6 @@ export default defineConfig({
   plugins: [react()],
   test: {
     include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts'],
+    setupFiles: ['src/test/setup.ts'],
   },
 })
