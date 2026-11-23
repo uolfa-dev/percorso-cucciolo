@@ -50,6 +50,20 @@
       "lessonIds": []
     },
     {
+      "id": "extra-attenzione",
+      "title": "Attenzione e ascolto",
+      "description": "Altre lezioni su attenzione, nome e contatto visivo.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-metodo",
+      "title": "Metodo e principi",
+      "description": "Come affrontare i comportamenti indesiderati e perché farlo senza intimidazione.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
       "id": "extra-calma",
       "title": "Calma e autocontrollo",
       "description": "Altre lezioni su calma e autocontrollo.",
@@ -57,8 +71,15 @@
       "lessonIds": []
     },
     {
+      "id": "extra-posizioni",
+      "title": "Posizioni e condotta",
+      "description": "Posizioni, lavoro a distanza e condotta di precisione.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
       "id": "extra-guinzaglio",
-      "title": "Guinzaglio",
+      "title": "Guinzaglio e passeggiata",
       "description": "Altre lezioni sulla passeggiata al guinzaglio.",
       "kind": "extra",
       "lessonIds": []
@@ -106,6 +127,27 @@
       "lessonIds": []
     },
     {
+      "id": "extra-socializzazione",
+      "title": "Socializzazione e altri cani",
+      "description": "Socializzazione, presentazioni e gioco tra cani.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-risorse",
+      "title": "Difesa delle risorse",
+      "description": "Prevenire e affrontare la difesa di cibo, giochi e posti.",
+      "kind": "extra",
+      "lessonIds": ["rilascio-da-cuccia-e-divano"]
+    },
+    {
+      "id": "extra-gioco",
+      "title": "Gioco e riporto",
+      "description": "Tira e molla, riporto e gioco come rinforzo.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
       "id": "extra-trick",
       "title": "Trick e giochi mentali",
       "description": "Altri trick e giochi.",
@@ -121,10 +163,24 @@
     },
     {
       "id": "extra-vita-quotidiana",
-      "title": "Vita quotidiana",
-      "description": "Altre lezioni sulla convivenza di ogni giorno.",
+      "title": "Casa e vita quotidiana",
+      "description": "Bisogni, trasportino, recinto e regole di casa.",
       "kind": "extra",
-      "lessonIds": ["rilascio-da-cuccia-e-divano"]
+      "lessonIds": []
+    },
+    {
+      "id": "extra-cucciolo",
+      "title": "Cucciolo e nuovo arrivo",
+      "description": "I primi giorni con un cucciolo o un cane appena arrivato.",
+      "kind": "extra",
+      "lessonIds": []
+    },
+    {
+      "id": "extra-assistenza",
+      "title": "Cani da assistenza e luoghi pubblici",
+      "description": "Negozi, locali e compiti dei cani da assistenza.",
+      "kind": "extra",
+      "lessonIds": []
     }
   ]
 }
