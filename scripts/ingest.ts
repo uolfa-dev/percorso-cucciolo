@@ -1,10 +1,11 @@
 import { spawnSync } from 'node:child_process'
-import { closeSync, existsSync, mkdirSync, openSync, readdirSync, renameSync } from 'node:fs'
+import { closeSync, existsSync, mkdirSync, openSync, readdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { setTimeout as sleep } from 'node:timers/promises'
 import { parseArgs } from 'node:util'
 import { isPublicVideo, readFlatPlaylist } from './lib/channel.ts'
 import { RAW_CHANNEL, RAW_VIDEOS, ROOT } from './lib/paths.ts'
+import { slimVideoInfo } from './lib/video-info.ts'
 
 const CHANNEL = 'https://www.youtube.com/@kikopup'
 const MAX_CONSECUTIVE_FAILURES = 3
@@ -16,6 +17,8 @@ const { values: options, positionals: extraYtDlpArgs } = parseArgs({
     // Ignora HTTP(S)_PROXY: per le reti senza proxy aziendale
     direct: { type: 'boolean', default: false },
     limit: { type: 'string' },
+    // Solo questi video (id separati da virgola), nell'ordine dato
+    only: { type: 'string' },
   },
   // Gli argomenti dopo "--" passano a yt-dlp così come sono
   allowPositionals: true,
@@ -89,10 +92,13 @@ const downloaded = new Set(
 )
 const limit = options.limit === undefined ? Infinity : Number.parseInt(options.limit, 10)
 if (Number.isNaN(limit)) throw new Error(`--limit non valido: ${options.limit}`)
-const missing = videoIds.filter((id) => !downloaded.has(id))
+const wanted = options.only?.split(',') ?? videoIds
+const unknown = wanted.filter((id) => !videoIds.includes(id))
+if (unknown.length > 0) throw new Error(`--only: video non presenti tra quelli pubblici del canale: ${unknown.join(', ')}`)
+const missing = wanted.filter((id) => !downloaded.has(id))
 const pending = missing.slice(0, limit)
 console.log(
-  `${videoIds.length} video pubblici nel canale, ${videoIds.length - missing.length} già scaricati, ` +
+  `${videoIds.length} video pubblici nel canale, ${wanted.length - missing.length} su ${wanted.length} già scaricati, ` +
     `${pending.length} da scaricare ora.`,
 )
 
@@ -103,27 +109,35 @@ let succeeded = 0
 let consecutiveFailures = 0
 for (const [index, id] of pending.entries()) {
   console.log(`[${index + 1}/${pending.length}] ${id}`)
+  const infoFile = join(RAW_VIDEOS, `${id}.info.json`)
   // yt-dlp scrive il file info solo dopo i sottotitoli: se esiste, il video è completo
-  const ok = ytDlp([
-    '--skip-download',
-    '--write-info-json',
-    '--write-subs',
-    '--write-auto-subs',
-    '--sub-langs',
-    'en.*',
-    '--sub-format',
-    'json3',
-    '--ignore-no-formats-error',
-    '--no-progress',
-    '--sleep-requests',
-    '1',
-    '--sleep-subtitles',
-    '2',
-    '-o',
-    join(RAW_VIDEOS, '%(id)s.%(ext)s'),
-    `https://www.youtube.com/watch?v=${id}`,
-  ])
+  const ok =
+    ytDlp([
+      '--skip-download',
+      '--write-info-json',
+      // Solo la trascrizione automatica originale: "en" è una sua traduzione e costerebbe una richiesta in più
+      '--write-auto-subs',
+      '--sub-langs',
+      'en.*-orig',
+      '--sub-format',
+      'json3',
+      // Servono solo metadati e sottotitoli: niente player JS né manifest dei formati video
+      '--extractor-args',
+      'youtube:player_skip=js;skip=hls,dash',
+      '--ignore-no-formats-error',
+      '--no-progress',
+      '--sleep-requests',
+      '1',
+      '--sleep-subtitles',
+      '2',
+      '-o',
+      join(RAW_VIDEOS, '%(id)s.%(ext)s'),
+      `https://www.youtube.com/watch?v=${id}`,
+    ]) && existsSync(infoFile)
   if (ok) {
+    const slim = `${infoFile}.tmp`
+    writeFileSync(slim, JSON.stringify(slimVideoInfo(JSON.parse(readFileSync(infoFile, 'utf8')))))
+    renameSync(slim, infoFile)
     succeeded += 1
     consecutiveFailures = 0
   } else {

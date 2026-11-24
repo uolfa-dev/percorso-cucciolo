@@ -3,8 +3,7 @@ import { join } from 'node:path'
 import type { Video } from '../src/content/schema.ts'
 import { isPublicVideo, readFlatPlaylist, type FlatEntry } from './lib/channel.ts'
 import { CONTENT, RAW_CHANNEL, RAW_VIDEOS, TRANSCRIPTS } from './lib/paths.ts'
-
-type VideoInfo = { title?: string; duration?: number; upload_date?: string }
+import type { VideoInfo } from './lib/video-info.ts'
 
 const playlistsByVideo = new Map<string, Set<string>>()
 const playlistsDir = join(RAW_CHANNEL, 'playlists')
@@ -19,7 +18,7 @@ for (const name of readdirSync(playlistsDir).filter((n) => n.endsWith('.json')))
 
 function toVideo(entry: FlatEntry, kind: Video['kind']): Video {
   const infoFile = join(RAW_VIDEOS, `${entry.id}.info.json`)
-  const info = existsSync(infoFile) ? (JSON.parse(readFileSync(infoFile, 'utf8')) as VideoInfo) : {}
+  const info: Partial<VideoInfo> = existsSync(infoFile) ? JSON.parse(readFileSync(infoFile, 'utf8')) : {}
   const uploadDate = info.upload_date?.match(/^(\d{4})(\d{2})(\d{2})$/)
   const duration = info.duration ?? entry.duration
   return {

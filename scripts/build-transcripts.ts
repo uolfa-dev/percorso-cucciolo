@@ -2,16 +2,7 @@ import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { formatTimestamp, json3ToParagraphs, type Json3 } from './lib/json3.ts'
 import { RAW_VIDEOS, TRANSCRIPTS } from './lib/paths.ts'
-
-type VideoInfo = {
-  id: string
-  title: string
-  duration?: number
-  upload_date?: string
-  description?: string
-  chapters?: { start_time: number; title: string }[] | null
-  subtitles?: Record<string, unknown>
-}
+import type { VideoInfo } from './lib/video-info.ts'
 
 function readJson<T>(file: string): T {
   return JSON.parse(readFileSync(join(RAW_VIDEOS, file), 'utf8')) as T
